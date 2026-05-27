@@ -1,0 +1,29 @@
+{
+  "title": "Thành phố Tương Lai: Nơi Giấc Mơ Thành Hiện Thực",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "narration": "Hãy tưởng tượng một thế giới nơi công nghệ hòa quyện hoàn hảo với thiên nhiên. Một tương lai không còn khói bụi, mà thay vào đó là không khí trong lành và những tòa nhà xanh mướt vươn lên trời cao.",
+      "visual_prompt": "cinematic aerial shot of a futuristic eco-city, sustainable skyscrapers covered in vertical gardens, solar panels glinting on rooftops, lush green parks integrated within the urban landscape, clean air, bright daylight, vibrant colors, highly detailed, 8k",
+      "camera_motion": "zoom_in",
+      "subtitle": "Thành phố xanh và bền vững",
+      "actual_duration": 11.33
+    },
+    {
+      "scene_id": 2,
+      "narration": "Những phương tiện di chuyển thông minh lướt đi êm ái, kết nối mọi người và mọi nơi một cách nhanh chóng. Cuộc sống trở nên tiện lợi và hiệu quả hơn bao giờ hết.",
+      "visual_prompt": "medium shot of autonomous flying vehicles and magnetic levitation trains moving smoothly through a futuristic cityscape, people interacting with holographic displays on sky bridges, clean energy infrastructure visible, soft ambient lighting, optimistic mood, photorealistic, 4k",
+      "camera_motion": "pan_right",
+      "subtitle": "Giao thông thông minh, kết nối mọi nơi",
+      "actual_duration": 9.82
+    },
+    {
+      "scene_id": 3,
+      "narration": "Đây không chỉ là những tòa nhà cao tầng hay phương tiện hiện đại. Đây là nơi con người sống hài hòa với công nghệ, kiến tạo nên một cộng đồng thịnh vượng và tràn đầy hy vọng.",
+      "visual_prompt": "close-up shot of diverse people smiling and engaging in community activities in a futuristic public square, background showing sustainable architecture and advanced technology seamlessly integrated, warm sunset lighting, sense of community and belonging, highly detailed, cinematic, 8k",
+      "camera_motion": "zoom_out",
+      "subtitle": "Cuộc sống thịnh vượng, đầy hy vọng",
+      "actual_duration": 10.39
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "title": "VŨ TRỤ BÍ ẨN: Những Điều Chưa Ai Biết!",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "narration": "Bạn có bao giờ nhìn lên bầu trời đêm và tự hỏi? Có bao nhiêu hành tinh, bao nhiêu vì sao mà chúng ta chưa từng khám phá?",
+      "visual_prompt": "A breathtaking, highly detailed portrait shot of the Milky Way galaxy from an alien planet's surface, vertical composition, vibrant nebulae, countless stars, dark silhouette of alien flora in the foreground, mystical moonlight, 4k",
+      "camera_motion": "zoom_in",
+      "subtitle": "Bầu trời đêm đầy bí ẩn",
+      "actual_duration": 7.2
+    },
+    {
+      "scene_id": 2,
+      "narration": "Và đâu đó trong vô tận ấy, có thể tồn tại những nền văn minh tiên tiến hơn chúng ta hàng triệu năm. Họ đang làm gì?",
+      "visual_prompt": "Cinematic portrait shot of a colossal, ancient alien city floating in space, vertical composition, intricate geometric architecture glowing with soft, otherworldly light, advanced flying vehicles leaving luminous trails, deep space background, awe-inspiring, 8k",
+      "camera_motion": "zoom_out",
+      "subtitle": "Nền văn minh ngoài hành tinh?",
+      "actual_duration": 7.01
+    },
+    {
+      "scene_id": 3,
+      "narration": "Nhưng vũ trụ không chỉ có ánh sáng. Những lỗ đen khổng lồ, nuốt chửng mọi thứ, ẩn chứa những định luật vật lý mà con người chưa thể nào lý giải hết.",
+      "visual_prompt": "Intense close-up portrait shot of a supermassive black hole's accretion disk, vertical composition, swirling plasma in vibrant reds and blues, distorted starlight, immense gravitational pull visualized, ominous and powerful, 4k",
+      "camera_motion": "zoom_in",
+      "subtitle": "Sức mạnh của Lỗ Đen",
+      "actual_duration": 8.5
+    },
+    {
+      "scene_id": 4,
+      "narration": "Khoa học vẫn đang miệt mài tìm kiếm câu trả lời cho những câu hỏi lớn. Có lẽ, chúng ta không cô đơn đâu.",
+      "visual_prompt": "Emotional portrait shot of a lone astronaut gazing out of a spaceship window at a distant, earth-like planet, vertical composition, hopeful yet melancholic mood, stars twinkling, lens flare from a nearby nebula, sense of wonder and isolation, 8k",
+      "camera_motion": "zoom_out",
+      "subtitle": "Chúng ta có cô đơn?",
+      "actual_duration": 6.48
+    },
+    {
+      "scene_id": 5,
+      "narration": "Vũ trụ là một câu chuyện chưa có hồi kết. Bạn sẵn sàng khám phá cùng chúng tôi chứ?",
+      "visual_prompt": "Dynamic montage portrait shot of various stunning cosmic phenomena: a supernova explosion, an iridescent nebula, a distant galaxy cluster, vertical composition, vibrant colors, sense of vastness and discovery, energetic and inspiring, 4k",
+      "camera_motion": "zoom_in",
+      "subtitle": "Hãy cùng khám phá!",
+      "actual_duration": 5.4
+    }
+  ]
+}

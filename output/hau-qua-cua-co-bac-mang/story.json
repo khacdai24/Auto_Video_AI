@@ -1,0 +1,45 @@
+{
+  "title": "Đừng Để Cờ Bạc Mạng Cuốn Bạn Đi!",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "narration": "Tưởng bở là cơ hội đổi đời, nhưng cờ bạc mạng lại là chiếc bẫy ngọt ngào. Càng chơi, càng lún sâu, mọi thứ cứ thế tuột khỏi tầm tay.",
+      "visual_prompt": "Cinematic portrait shot of a young man staring intensely at a glowing smartphone screen displaying a gambling interface, dark room lit only by the screen's glare, vertical composition, close-up on his worried face, dramatic shadows, gritty realism, 4k",
+      "camera_motion": "zoom_in",
+      "subtitle": "Cờ bạc mạng: Mồi câu ngọt ngào",
+      "actual_duration": 8.28
+    },
+    {
+      "scene_id": 2,
+      "narration": "Tiền bạc đội nón ra đi, nợ nần chồng chất. Giấc mơ giàu sang giờ chỉ còn là cơn ác mộng đeo bám.",
+      "visual_prompt": "Surreal vertical composition, a hand reaching out from a dark abyss, trying to grasp falling coins and banknotes, distorted figures of worried people in the background, deep blues and reds, unsettling atmosphere, digital art, 4k",
+      "camera_motion": "zoom_out",
+      "subtitle": "Nợ nần chồng chất, tiền bạc tiêu tan",
+      "actual_duration": 6.53
+    },
+    {
+      "scene_id": 3,
+      "narration": "Niềm tin tan vỡ, mối quan hệ rạn nứt. Người thân yêu dần xa lánh, chỉ còn lại sự cô đơn và hối hận.",
+      "visual_prompt": "Emotional portrait shot, a woman crying silently while looking out a window at a blurry cityscape at night, silhouette of a man walking away in the distance, vertical composition, soft melancholic lighting, bokeh effect, cinematic photography, 4k",
+      "camera_motion": "zoom_in",
+      "subtitle": "Tình thân rạn nứt, chỉ còn cô đơn",
+      "actual_duration": 7.06
+    },
+    {
+      "scene_id": 4,
+      "narration": "Sức khỏe suy kiệt, tinh thần kiệt quệ. Mỗi ngày trôi qua là một cuộc chiến với chính mình.",
+      "visual_prompt": "Disturbing vertical composition, a person's silhouette hunched over a desk, surrounded by empty energy drink cans and scattered papers, harsh fluorescent lighting casting long shadows, a visible tremor in their hands, photorealistic, 4k",
+      "camera_motion": "zoom_out",
+      "subtitle": "Sức khỏe, tinh thần suy kiệt",
+      "actual_duration": 5.86
+    },
+    {
+      "scene_id": 5,
+      "narration": "Đừng để cờ bạc mạng hủy hoại cuộc đời bạn. Hãy tìm kiếm sự giúp đỡ, quay đầu là bờ bến!",
+      "visual_prompt": "Hopeful portrait shot, a person walking towards a bright sunrise over a calm ocean, silhouette against the light, vertical composition, soft golden hour lighting, feeling of peace and new beginnings, vibrant colors, cinematic landscape, 4k",
+      "camera_motion": "zoom_in",
+      "subtitle": "Cứu lấy bản thân, đừng để quá muộn!",
+      "actual_duration": 6.14
+    }
+  ]
+}

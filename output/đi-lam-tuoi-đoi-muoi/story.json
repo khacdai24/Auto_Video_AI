@@ -1,0 +1,45 @@
+{
+  "title": "Đi làm tuổi đôi mươi: Giấc mơ và thực tế",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "narration": "Bao nhiêu hoài bão, ước mơ trong cái tuổi này. Cứ ngỡ bước ra đời là tất cả sẽ dễ dàng.",
+      "visual_prompt": "Close-up shot of a young person's face with bright, hopeful eyes, looking up with a slight smile. Soft, warm morning light illuminating their features. Dreamy, optimistic mood. Vertical composition, 9:16 aspect ratio.",
+      "camera_motion": "zoom_in",
+      "subtitle": "Tuổi đôi mươi: Bao hoài bão",
+      "actual_duration": 5.9
+    },
+    {
+      "scene_id": 2,
+      "narration": "Rồi thực tế ập đến! Chạy deadline, văn phòng chật chội, đồng lương eo hẹp. Mệt nhoài nhưng vẫn phải cố.",
+      "visual_prompt": "Medium shot of a young person looking stressed, hunched over a laptop in a cluttered, generic office cubicle. Fluorescent lighting, dull colors, feeling of pressure. Vertical composition, 9:16 aspect ratio.",
+      "camera_motion": "zoom_out",
+      "subtitle": "Thực tế phũ phàng...",
+      "actual_duration": 7.85
+    },
+    {
+      "scene_id": 3,
+      "narration": "Ăn vội bữa cơm hộp, nhìn bạn bè khoe ảnh du lịch. Tự hỏi: 'Mình đang làm gì ở đây?'",
+      "visual_prompt": "Over-the-shoulder shot of a young person eating a simple meal from a takeout container at their desk. Phone screen shows a vibrant travel photo. Slight desaturation of the background office. Vertical composition, 9:16 aspect ratio.",
+      "camera_motion": "zoom_in",
+      "subtitle": "So sánh và nghi ngờ",
+      "actual_duration": 6.17
+    },
+    {
+      "scene_id": 4,
+      "narration": "Nhưng rồi lại nhìn vào gương, thấy mình trưởng thành hơn. Những bài học đắt giá này sẽ không bao giờ lãng phí.",
+      "visual_prompt": "Medium shot of a young person looking at their reflection in a slightly smudged office window. Their expression shifts from doubt to a flicker of determination. Evening light casting a golden glow. Vertical composition, 9:16 aspect ratio.",
+      "camera_motion": "zoom_out",
+      "subtitle": "Sự trưởng thành âm thầm",
+      "actual_duration": 6.31
+    },
+    {
+      "scene_id": 5,
+      "narration": "Tuổi đôi mươi đi làm là vậy đó. Vừa vật lộn, vừa học hỏi. Còn bạn, hành trình của bạn thế nào?",
+      "visual_prompt": "Wide shot of a young person walking out of an office building into the evening street, looking ahead with a hopeful, resilient smile. City lights beginning to twinkle. Warm, inviting lighting. Vertical composition, 9:16 aspect ratio.",
+      "camera_motion": "zoom_in",
+      "subtitle": "Hành trình vẫn tiếp diễn",
+      "actual_duration": 7.68
+    }
+  ]
+}

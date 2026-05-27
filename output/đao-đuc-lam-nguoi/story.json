@@ -1,0 +1,45 @@
+{
+  "title": "Đạo Đức: Nền Tảng Của Con Người",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "narration": "Bạn đã bao giờ tự hỏi, điều gì làm nên một con người đích thực? Đó không chỉ là hình hài, mà là những hành động, cách ta đối xử với thế giới xung quanh.",
+      "visual_prompt": "Cinematic portrait shot of a hand gently cradling a wilting flower, vertical composition, soft warm light, shallow depth of field, bokeh background, focusing on the delicate details of the petals and the gentle touch, poignant mood, 4k",
+      "camera_motion": "zoom_in",
+      "subtitle": "Hành động nhỏ, ý nghĩa lớn.",
+      "actual_duration": 8.5
+    },
+    {
+      "scene_id": 2,
+      "narration": "Đạo đức là kim chỉ nam, giúp ta phân biệt đúng sai, tốt xấu. Nó không phải thứ có sẵn, mà cần được vun đắp mỗi ngày.",
+      "visual_prompt": "Close-up shot of a compass spinning, then settling on North, vertical composition, deep blue background with faint star patterns, subtle glowing lines indicating direction, sense of purpose and guidance, mysterious yet clear mood, 4k",
+      "camera_motion": "zoom_out",
+      "subtitle": "Kim chỉ nam cho mọi quyết định.",
+      "actual_duration": 7.75
+    },
+    {
+      "scene_id": 3,
+      "narration": "Một lời nói tử tế, một hành động giúp đỡ người khác. Dù nhỏ bé, chúng lại lan tỏa sức mạnh phi thường.",
+      "visual_prompt": "A montage of diverse hands performing small acts of kindness: helping an elderly person cross the street, sharing food, offering a comforting touch, all framed in a vertical composition with a soft, uplifting glow emanating from each interaction, hopeful and inspiring mood, 4k",
+      "camera_motion": "zoom_in",
+      "subtitle": "Lan tỏa yêu thương và sự sẻ chia.",
+      "actual_duration": 6.98
+    },
+    {
+      "scene_id": 4,
+      "narration": "Khi ta sống có trách nhiệm với bản thân và cộng đồng, ta đang xây dựng một xã hội tốt đẹp hơn, một tương lai đáng sống hơn.",
+      "visual_prompt": "Aerial shot looking down at a bustling city square where people of different backgrounds are interacting positively, creating a harmonious mosaic, vertical composition, vibrant colors, sense of interconnectedness and community spirit, optimistic and dynamic mood, 4k",
+      "camera_motion": "zoom_out",
+      "subtitle": "Xây dựng một thế giới tốt đẹp hơn.",
+      "actual_duration": 6.43
+    },
+    {
+      "scene_id": 5,
+      "narration": "Đạo đức làm người, đôi khi chỉ đơn giản là sống sao cho xứng đáng, để mỗi ngày trôi qua đều là một minh chứng cho lòng tốt của bạn.",
+      "visual_prompt": "A single candle flame flickering gently in the darkness, casting a warm, inviting glow, vertical composition, highly detailed flame, dark, serene background, emphasizing the purity and resilience of the light, peaceful and reflective mood, 4k",
+      "camera_motion": "zoom_in",
+      "subtitle": "Sống sao cho xứng đáng.",
+      "actual_duration": 6.55
+    }
+  ]
+}

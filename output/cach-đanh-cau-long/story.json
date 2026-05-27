@@ -1,0 +1,45 @@
+{
+  "title": "Đánh Cầu Lông Đỉnh Cao: 5 Bước Cực Dễ!",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "narration": "Muốn đánh cầu lông hay như dân chuyên? Bỏ túi ngay 5 bí kíp này. Đầu tiên, cầm vợt đúng cách! Chuẩn bị sẵn sàng chưa?",
+      "visual_prompt": "Close-up shot of hands holding a badminton racket in a ready grip, fingers loosely wrapped around the handle, natural lighting, vibrant colors, portrait composition, 9:16 aspect ratio, slightly blurred background showing a badminton court.",
+      "camera_motion": "zoom_in",
+      "subtitle": "1. Cầm vợt đúng chuẩn",
+      "actual_duration": 8.9
+    },
+    {
+      "scene_id": 2,
+      "narration": "Thứ hai, tư thế sẵn sàng! Chân hơi khuỵu, người hơi nghiêng, mắt nhìn thẳng về phía trước. Như thế này mới chuẩn bài!",
+      "visual_prompt": "Full body shot of a person in a ready stance on a badminton court, knees slightly bent, body tilted forward, focused expression, dynamic lighting, athletic wear, portrait composition, 9:16 aspect ratio, green court lines visible.",
+      "camera_motion": "zoom_out",
+      "subtitle": "2. Tư thế sẵn sàng",
+      "actual_duration": 8.14
+    },
+    {
+      "scene_id": 3,
+      "narration": "Cảnh thứ ba: Kỹ thuật đánh! Vung vợt dứt khoát, tiếp xúc cầu ở điểm cao nhất. Cú đánh uy lực là đây!",
+      "visual_prompt": "Action shot of a badminton player mid-swing, racket making contact with the shuttlecock at its highest point, motion blur, intense focus, dramatic lighting highlighting the movement, portrait composition, 9:16 aspect ratio, abstract background suggesting speed.",
+      "camera_motion": "zoom_in",
+      "subtitle": "3. Vung vợt chuẩn",
+      "actual_duration": 7.34
+    },
+    {
+      "scene_id": 4,
+      "narration": "Bước bốn: Di chuyển linh hoạt! Luôn giữ thăng bằng và sẵn sàng di chuyển theo hướng cầu. Nhẹ nhàng như gió!",
+      "visual_prompt": "Mid-shot of a badminton player gracefully moving across the court, body balanced, eyes tracking the shuttlecock, soft natural light, sense of freedom and agility, portrait composition, 9:16 aspect ratio, blurred court background.",
+      "camera_motion": "zoom_out",
+      "subtitle": "4. Di chuyển linh hoạt",
+      "actual_duration": 7.27
+    },
+    {
+      "scene_id": 5,
+      "narration": "Cuối cùng, tập luyện thường xuyên! Càng chơi nhiều, bạn càng thành thạo. Nào, ra sân và cháy hết mình thôi!",
+      "visual_prompt": "Upward angle shot of a badminton player celebrating a successful shot, looking up with a triumphant smile, bright sunlight filtering from above, vibrant court environment, energetic mood, portrait composition, 9:16 aspect ratio, bokeh effect on background.",
+      "camera_motion": "zoom_in",
+      "subtitle": "5. Chăm chỉ tập luyện",
+      "actual_duration": 7.87
+    }
+  ]
+}

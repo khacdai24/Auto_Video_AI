@@ -1,0 +1,45 @@
+{
+  "title": "Bí mật kinh ngạc về MÈO mà bạn chưa biết!",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "narration": "Bạn có biết, mèo có tới 32 cơ riêng trên tai? Chúng giúp chúng xoay tai 180 độ để định vị âm thanh cực chuẩn luôn đấy!",
+      "visual_prompt": "Close-up shot of a fluffy ginger cat's ear with intricate details, soft natural light, shallow depth of field, vertical composition, 9:16 aspect ratio, macro photography style",
+      "camera_motion": "zoom_in",
+      "subtitle": "Tai mèo cực thính!",
+      "actual_duration": 7.75
+    },
+    {
+      "scene_id": 2,
+      "narration": "Và đừng quên, dấu chân mèo cũng độc đáo như vân tay con người nhé! Không có hai chú mèo nào có dấu chân giống hệt nhau đâu.",
+      "visual_prompt": "High-angle shot focusing on a cat's paw print pressed into soft sand, dappled sunlight, naturalistic, high detail, vertical composition, 9:16 aspect ratio",
+      "camera_motion": "zoom_out",
+      "subtitle": "Dấu chân độc nhất vô nhị!",
+      "actual_duration": 7.1
+    },
+    {
+      "scene_id": 3,
+      "narration": "Hóa ra, mèo không hề kêu 'meo meo' với đồng loại. Âm thanh này là để giao tiếp với con người chúng ta thôi đấy!",
+      "visual_prompt": "A cute tabby kitten looking up inquisitively at the camera, soft diffused light creating a warm glow, slightly blurred background of a cozy living room, vertical composition, 9:16 aspect ratio, gentle bokeh",
+      "camera_motion": "zoom_in",
+      "subtitle": "Chỉ 'meo meo' với bạn!",
+      "actual_duration": 6.65
+    },
+    {
+      "scene_id": 4,
+      "narration": "Tuổi thọ trung bình của mèo nhà có thể lên tới 15 năm, thậm chí hơn. Chúng là những người bạn đồng hành tuyệt vời và lâu dài!",
+      "visual_prompt": "An elegant Siamese cat lounging gracefully on a windowsill, golden hour sunlight streaming in, peaceful and serene mood, vertical composition, 9:16 aspect ratio, cinematic lighting",
+      "camera_motion": "zoom_out",
+      "subtitle": "Bạn đồng hành lâu năm!",
+      "actual_duration": 7.37
+    },
+    {
+      "scene_id": 5,
+      "narration": "Cuối cùng, mèo có một tuyến mùi hương đặc biệt ở cằm và má. Khi chúng dụi đầu vào bạn, đó là cách chúng đánh dấu lãnh thổ và thể hiện tình yêu!",
+      "visual_prompt": "A loving interaction between a human hand gently stroking a cat's chin, soft focused background, warm and affectionate mood, detailed fur texture, vertical composition, 9:16 aspect ratio, tender moment",
+      "camera_motion": "zoom_in",
+      "subtitle": "Dấu yêu của boss!",
+      "actual_duration": 8.14
+    }
+  ]
+}
