@@ -67,7 +67,7 @@ AUDIO_BITRATE = "128k"     # 128kbps (trước: 63kbps mono)
 # 📝 Cấu hình phụ đề — Burned-in bằng Pillow
 # ============================================================
 SUBTITLE_FONT_SIZE_RATIO = 0.025  # Gần size cũ: ~32px trên ảnh/video cao 1280px
-SUBTITLE_Y_RATIO = 0.20            # Đưa phụ đề lên cao hơn, tránh bị nút UI của các MXH che khuất
+SUBTITLE_Y_RATIO = 0.40            # Đưa phụ đề lên cao hơn (khu vực an toàn), tránh bị giao diện MXH che khuất
 
 # Giữ lại SUBTITLE_STYLE cho fallback FFmpeg subtitles filter
 SUBTITLE_STYLE = (

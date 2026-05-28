@@ -167,20 +167,21 @@ def _get_portrait_request_size():
     return width, height
 
 
-def burn_subtitle_to_image(image_path, subtitle_text):
+def draw_subtitle_on_image_obj(img, subtitle_text):
     """
-    Vẽ phụ đề trực tiếp lên hình ảnh tĩnh (burned-in subtitle).
-    Giúp hỗ trợ phụ đề ngay cả khi FFmpeg không có filter 'subtitles' hoặc 'drawtext'.
+    Vẽ phụ đề trực tiếp lên một đối tượng PIL Image.
+    Trả về ảnh đã được vẽ phụ đề.
     """
     if not subtitle_text:
-        return
+        return img
     try:
         from PIL import Image, ImageDraw, ImageFont
         import textwrap
 
-        img = Image.open(image_path)
-        draw = ImageDraw.Draw(img)
-        width, height = img.size
+        # Tạo bản sao RGBA để vẽ overlay trong suốt
+        img_rgba = img.convert('RGBA')
+        draw = ImageDraw.Draw(img_rgba)
+        width, height = img_rgba.size
 
         # Cấu hình text — dùng tỷ lệ từ config
         font_size = int(height * SUBTITLE_FONT_SIZE_RATIO)
@@ -206,7 +207,7 @@ def burn_subtitle_to_image(image_path, subtitle_text):
             font = ImageFont.load_default()
 
         # Wrap text thành các dòng tối đa ~40 ký tự tiếng Việt
-        lines = textwrap.wrap(subtitle_text, width=45)
+        lines = textwrap.wrap(subtitle_text, width=40)
         
         # Tính kích thước khối chữ
         line_heights = []
@@ -231,15 +232,15 @@ def burn_subtitle_to_image(image_path, subtitle_text):
         box_x2 = min(width - 10, box_x2)
 
         # Vẽ nền đen bán trong suốt cực kỳ nhẹ (khoảng 33% opacity)
-        overlay = Image.new('RGBA', img.size, (0, 0, 0, 0))
+        overlay = Image.new('RGBA', img_rgba.size, (0, 0, 0, 0))
         overlay_draw = ImageDraw.Draw(overlay)
         overlay_draw.rounded_rectangle(
             [box_x1, box_y1, box_x2, box_y2],
             radius=8,
             fill=(0, 0, 0, 85)
         )
-        img = Image.alpha_composite(img.convert('RGBA'), overlay)
-        draw = ImageDraw.Draw(img)
+        img_rgba = Image.alpha_composite(img_rgba, overlay)
+        draw = ImageDraw.Draw(img_rgba)
 
         # Vẽ chữ màu trắng với viền đen dày (stroke outline) đè lên trên nền mờ
         current_y = box_y1 + 8
@@ -257,8 +258,24 @@ def burn_subtitle_to_image(image_path, subtitle_text):
             )
             current_y += line_heights[i] + 8
 
-        # Lưu đè lên ảnh gốc
-        img.convert('RGB').save(image_path)
+        return img_rgba.convert('RGB')
+    except Exception as e:
+        print(f"      ⚠️ Không thể vẽ phụ đề lên đối tượng ảnh: {e}")
+        return img
+
+
+def burn_subtitle_to_image(image_path, subtitle_text):
+    """
+    Vẽ phụ đề trực tiếp lên hình ảnh tĩnh (burned-in subtitle).
+    Giúp hỗ trợ phụ đề ngay cả khi FFmpeg không có filter 'subtitles' hoặc 'drawtext'.
+    """
+    if not subtitle_text:
+        return
+    try:
+        from PIL import Image
+        img = Image.open(image_path)
+        img_with_sub = draw_subtitle_on_image_obj(img, subtitle_text)
+        img_with_sub.save(image_path)
         print(f"      📝 Đã burn phụ đề vào ảnh (Bold + Outline): \"{subtitle_text}\"")
     except Exception as e:
         print(f"      ⚠️ Không thể burn phụ đề vào ảnh: {e}")

@@ -1,4 +1,4 @@
-<![CDATA[<div align="center">
+<div align="center">
 
 # 🎬 Auto Video AI — Pipeline v2.1
 
@@ -447,4 +447,3 @@ Pipeline được thiết kế với nhiều lớp bảo vệ để đảm bảo
 *Nếu dự án hữu ích, hãy ⭐ star repo này!*
 
 </div>
-]]>

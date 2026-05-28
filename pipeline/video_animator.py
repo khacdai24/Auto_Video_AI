@@ -36,9 +36,10 @@ def _resize_cover(img, width, height):
     return resized.crop((left, top, left + width, top + height))
 
 
-def _render_zoom_frames(image_path, process, total_frames, camera_motion):
+def _render_zoom_frames(image_path, process, total_frames, camera_motion, subtitle_text=None):
     """Render từng frame bằng Pillow rồi pipe raw RGB vào FFmpeg."""
     from PIL import Image
+    from pipeline.image_generator import draw_subtitle_on_image_obj
 
     base = Image.open(image_path).convert("RGB")
     base = _resize_cover(base, VIDEO_WIDTH, VIDEO_HEIGHT)
@@ -52,6 +53,11 @@ def _render_zoom_frames(image_path, process, total_frames, camera_motion):
         left = (zoom_w - VIDEO_WIDTH) // 2
         top = (zoom_h - VIDEO_HEIGHT) // 2
         frame = frame.crop((left, top, left + VIDEO_WIDTH, top + VIDEO_HEIGHT))
+        
+        # Vẽ phụ đề tĩnh trực tiếp lên frame đã crop chính xác kích thước video 9:16
+        if subtitle_text:
+            frame = draw_subtitle_on_image_obj(frame, subtitle_text)
+            
         process.stdin.write(frame.tobytes())
 
 
@@ -65,7 +71,7 @@ def _resampling_lanczos():
         return Image.LANCZOS
 
 
-def animate_image(image_path, output_path, duration, camera_motion="zoom_in"):
+def animate_image(image_path, output_path, duration, camera_motion="zoom_in", subtitle_text=None):
     """
     Tạo video từ ảnh tĩnh với hiệu ứng Ken Burns (zoom only, mượt mà).
 
@@ -74,6 +80,7 @@ def animate_image(image_path, output_path, duration, camera_motion="zoom_in"):
         output_path: Đường dẫn file video output (.mp4)
         duration: Thời lượng video (giây)
         camera_motion: Loại hiệu ứng (zoom_in hoặc zoom_out)
+        subtitle_text: Nội dung phụ đề (nếu muốn vẽ trực tiếp lên các frame của video)
     """
     # Kiểm tra FFmpeg
     _check_ffmpeg()
@@ -109,7 +116,7 @@ def animate_image(image_path, output_path, duration, camera_motion="zoom_in"):
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE
         )
-        _render_zoom_frames(image_path, process, total_frames, camera_motion)
+        _render_zoom_frames(image_path, process, total_frames, camera_motion, subtitle_text)
         _, stderr = process.communicate()
         if process.returncode != 0:
             raise subprocess.CalledProcessError(

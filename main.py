@@ -225,7 +225,8 @@ Chế độ sử dụng:
 
         print(f"   🖼️  Scene {sid}: \"{scene['visual_prompt'][:60]}...\"")
         generate_image(scene["visual_prompt"], image_path)
-        burn_subtitle_to_image(image_path, scene["subtitle"])
+        # Không burn trực tiếp lên ảnh tĩnh để tránh bị phóng to/méo hình khi zoom
+        print(f"      📝 Đã lưu ảnh sạch, phụ đề sẽ được vẽ tĩnh trực tiếp lên video: \"{scene['subtitle']}\"")
 
     print()
 
@@ -245,7 +246,8 @@ Chế độ sử dụng:
         animate_image(
             image_path, video_path,
             scene["actual_duration"],
-            scene["camera_motion"]
+            scene["camera_motion"],
+            subtitle_text=scene["subtitle"]
         )
         print(f"   ✅ scene_{sid}.mp4")
 
