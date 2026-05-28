@@ -100,20 +100,22 @@ Trả về ĐÚNG JSON format như sau (KHÔNG markdown, KHÔNG giải thích th
 
 {{
   "title": "Tiêu đề video bằng tiếng Việt",
+  "intro_prompt": "English visual prompt for intro title card, cinematic theme related background, no text, clean copy space, 9:16 vertical composition",
+  "outro_prompt": "English visual prompt for outro card, cinematic theme related background, no text, clean copy space, 9:16 vertical composition",
   "scenes": [
     {{
       "scene_id": 1,
       "narration": "Lời thoại tiếng Việt cho cảnh này. Viết tự nhiên, hấp dẫn.",
       "visual_prompt": "Detailed English description for AI image generation in PORTRAIT/VERTICAL composition (9:16 aspect ratio). Include art style, lighting, mood. Example: cinematic portrait shot of a futuristic city at sunset, vertical composition, towering neon-lit skyscrapers, wet streets below, highly detailed, 4k",
       "camera_motion": "zoom_in",
-      "subtitle": "Phụ đề ngắn gọn tiếng Việt"
+      "subtitle": "Phụ đề tóm tắt lời thoại siêu ngắn gọn (dưới 8 từ) bằng tiếng Việt"
     }}
   ]
 }}
 
 Quy tắc BẮT BUỘC:
-1. narration và subtitle PHẢI bằng tiếng Việt
-2. visual_prompt PHẢI bằng tiếng Anh (cho AI sinh ảnh), PHẢI mô tả theo bố cục DỌC (portrait, vertical composition, 9:16). Ví dụ: close-up shot, portrait framing, vertical composition, towering elements
+1. narration và subtitle PHẢI bằng tiếng Việt. Phụ đề (subtitle) PHẢI là câu tóm tắt cực kỳ ngắn gọn, súc tích (dưới 8 từ) mô tả ý chính của lời thoại để người xem đọc nhanh trên điện thoại.
+2. visual_prompt, intro_prompt, và outro_prompt PHẢI bằng tiếng Anh (cho AI sinh ảnh), PHẢI mô tả theo bố cục DỌC (portrait, vertical composition, 9:16). Ví dụ: close-up shot, portrait framing, vertical composition, towering elements, no text, copy space.
 3. camera_motion CHỈ chọn 1 trong 2: zoom_in hoặc zoom_out. TUYỆT ĐỐI KHÔNG dùng pan_left, pan_right
 4. Xen kẽ zoom_in và zoom_out giữa các cảnh
 5. CHỈ trả về JSON thuần túy, tuyệt đối không có markdown hoặc text khác"""
@@ -134,6 +136,12 @@ def _parse_and_validate(text):
     if "title" not in story or "scenes" not in story:
         print("   ⚠️  JSON không có 'title' hoặc 'scenes'")
         return None
+
+    # Fallback/default cho intro_prompt và outro_prompt
+    if "intro_prompt" not in story and story["scenes"]:
+        story["intro_prompt"] = story["scenes"][0]["visual_prompt"] + ", clean title card background, no text, copy space"
+    if "outro_prompt" not in story and story["scenes"]:
+        story["outro_prompt"] = story["scenes"][-1]["visual_prompt"] + ", clean closing card background, no text, copy space"
 
     required_fields = ["scene_id", "narration", "visual_prompt", "camera_motion", "subtitle"]
     for scene in story["scenes"]:

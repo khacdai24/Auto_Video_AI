@@ -1,0 +1,70 @@
+{
+  "title": "Người càng im lặng càng đáng sợ",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "narration": "Đừng coi thường một người đàn ông đang dần im lặng. Vì khi đàn ông không còn muốn giải thích nữa… là lúc họ đã nhìn thấu tất cả.",
+      "visual_prompt": "2D cinematic stickman animation. A lonely blue stickman sitting in a dark room under a single hanging light. Around him, floating speech bubbles slowly crack and disappear into dust. Dark navy background with soft glowing particles.",
+      "camera_motion": "zoom_in",
+      "subtitle": "Đừng coi thường một người đàn ông đang dần im lặng",
+      "time_start": "00:00",
+      "time_end": "00:04"
+    },
+    {
+      "scene_id": 2,
+      "narration": "Trước đây họ từng cố gắng giải thích, từng cố níu kéo, từng sợ mất người khác.",
+      "visual_prompt": "The stickman reaches toward glowing heart symbols floating away. He tries to hold them, but the hearts slip through his fingers and fade into darkness.",
+      "camera_motion": "zoom_out",
+      "subtitle": "Trước đây họ từng cố gắng giải thích, từng cố níu kéo, từng sợ...",
+      "time_start": "00:05",
+      "time_end": "00:09"
+    },
+    {
+      "scene_id": 3,
+      "narration": "Nhưng rồi cuộc đời dạy họ một điều đau đớn… người muốn hiểu bạn thì không cần giải thích. Người không muốn hiểu… nói bao nhiêu cũng vô ích.",
+      "visual_prompt": "The blue stickman stands in front of a crowd of gray shadow figures. His mouth glows as if speaking, but the words turn into smoke before reaching anyone.",
+      "camera_motion": "zoom_in",
+      "subtitle": "Nhưng rồi cuộc đời dạy họ một điều đau đớn",
+      "time_start": "00:10",
+      "time_end": "00:14"
+    },
+    {
+      "scene_id": 4,
+      "narration": "Từ đó họ bắt đầu ít nói hơn. Không phải vì yếu đuối… mà vì đã quá mệt mỏi với lòng người.",
+      "visual_prompt": "A tired stickman slowly removes a glowing mask from his face. The background becomes colder and darker while rain falls softly around him.",
+      "camera_motion": "zoom_out",
+      "subtitle": "Từ đó họ bắt đầu ít nói hơn",
+      "time_start": "00:15",
+      "time_end": "00:19"
+    },
+    {
+      "scene_id": 5,
+      "narration": "Người càng trưởng thành càng hiểu: tranh cãi để thắng một người… đôi khi lại là thua chính mình.",
+      "visual_prompt": "Two stickmen arguing aggressively while standing on a collapsing platform. The blue stickman quietly walks away into a calm blue light as the platform behind cracks apart.",
+      "camera_motion": "zoom_in",
+      "subtitle": "Người càng trưởng thành càng hiểu: tranh cãi để thắng một người",
+      "time_start": "00:20",
+      "time_end": "00:24"
+    },
+    {
+      "scene_id": 6,
+      "narration": "Có những người không còn ồn ào nữa… nhưng ánh mắt họ đã đủ nói hết mọi chuyện.",
+      "visual_prompt": "Close-up cinematic shot of the blue stickman's glowing eyes in darkness. Behind him, shattered chains float away as a white-gold light slowly rises from the horizon.",
+      "camera_motion": "zoom_out",
+      "subtitle": "Có những người không còn ồn ào nữa",
+      "time_start": "00:25",
+      "time_end": "00:30"
+    },
+    {
+      "scene_id": 7,
+      "narration": "Hãy nhớ… sự im lặng của một người từng tổn thương sâu sắc, thường đáng sợ hơn ngàn lời tức giận.",
+      "visual_prompt": "The character stands alone on top of a tall building at night, coat blowing in the wind. Massive glowing white light appears behind him while the city below fades into silence.",
+      "camera_motion": "zoom_in",
+      "subtitle": "Hãy nhớ",
+      "time_start": "00:31",
+      "time_end": "00:36"
+    }
+  ],
+  "intro_prompt": "2D cinematic stickman animation. A lonely blue stickman sitting in a dark room under a single hanging light. Around him, floating speech bubbles slowly crack and disappear into dust. Dark navy background with soft glowing particles., clean title card background, no text, copy space",
+  "outro_prompt": "The character stands alone on top of a tall building at night, coat blowing in the wind. Massive glowing white light appears behind him while the city below fades into silence., clean closing card background, no text, copy space"
+}

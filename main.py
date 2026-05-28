@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
-🎬 AI Video Generation Pipeline — 100% Miễn phí
-Tự động tạo video dọc (9:16) từ chủ đề bằng AI.
+🎬 AI Video Generation Pipeline v2.1 — 100% Miễn phí
+Tự động tạo video dọc (9:16) từ file idea.txt hoặc chủ đề AI.
 
 Sử dụng:
-    python main.py --topic "Thành phố tương lai"
-    python main.py --topic "Khám phá vũ trụ" --scenes 3
+    python main.py                          # Đọc từ idea.txt (MẶC ĐỊNH)
+    python main.py --idea my_script.txt     # Đọc từ file tùy chỉnh
+    python main.py --topic "Vũ trụ bí ẩn"  # Sinh tự động bằng Gemini
 """
 import argparse
 import json
@@ -15,7 +16,8 @@ import sys
 import time
 import unicodedata
 
-from config import OUTPUT_DIR, DEFAULT_NUM_SCENES, VIDEO_WIDTH, VIDEO_HEIGHT
+from config import OUTPUT_DIR, DEFAULT_NUM_SCENES, VIDEO_WIDTH, VIDEO_HEIGHT, IDEA_FILE
+from pipeline.idea_parser import parse_idea_file
 from pipeline.story_generator import generate_story
 from pipeline.voice_generator import generate_voice
 from pipeline.audio_utils import get_audio_duration
@@ -28,10 +30,8 @@ from pipeline.title_card import create_intro_card, create_outro_card
 
 def slugify(text):
     """Chuyển text thành slug an toàn cho tên thư mục."""
-    # Bỏ dấu tiếng Việt
     text = unicodedata.normalize('NFD', text)
     text = ''.join(c for c in text if unicodedata.category(c) != 'Mn')
-    # Chỉ giữ chữ, số, dấu gạch
     text = re.sub(r'[^\w\s-]', '', text.lower())
     text = re.sub(r'[-\s]+', '-', text).strip('-')
     return text or "video"
@@ -41,7 +41,7 @@ def print_banner():
     """In banner đẹp khi khởi chạy."""
     banner = """
 ╔══════════════════════════════════════════════════╗
-║  🎬  AI Video Generation Pipeline  v2.0         ║
+║  🎬  AI Video Generation Pipeline  v2.1         ║
 ║  📱  Video dọc 9:16 — TikTok/Reels/Shorts       ║
 ║  💰  100% Miễn phí — Không tốn API              ║
 ║  🇻🇳  Hỗ trợ tiếng Việt                          ║
@@ -55,67 +55,102 @@ def main():
         description="🎬 Tự động tạo video dọc 9:16 bằng AI — 100% miễn phí",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-Ví dụ:
-  python main.py --topic "Thành phố tương lai"
-  python main.py --topic "Khám phá vũ trụ" --scenes 3
-  python main.py --topic "Lịch sử Việt Nam" --scenes 7
+Chế độ sử dụng:
+  python main.py                          # Đọc từ idea.txt (mặc định)
+  python main.py --idea script.txt        # Đọc từ file tùy chỉnh
+  python main.py --topic "Vũ trụ bí ẩn"  # Sinh bằng Gemini AI
+  python main.py --topic "Test" --scenes 3
         """
     )
     parser.add_argument(
         "--topic",
         type=str,
-        help="Chủ đề video (tiếng Việt hoặc tiếng Anh)"
+        default=None,
+        help="Chủ đề video — kích hoạt chế độ Gemini AI"
+    )
+    parser.add_argument(
+        "--idea",
+        type=str,
+        default=None,
+        help=f"Đường dẫn file ý tưởng (mặc định: {IDEA_FILE})"
     )
     parser.add_argument(
         "--scenes",
         type=int,
         default=DEFAULT_NUM_SCENES,
-        help=f"Số lượng cảnh (mặc định: {DEFAULT_NUM_SCENES})"
+        help=f"Số lượng cảnh cho chế độ Gemini (mặc định: {DEFAULT_NUM_SCENES})"
     )
 
     args = parser.parse_args()
 
     print_banner()
 
-    # Nếu không truyền --topic, hỏi trực tiếp
-    topic = args.topic
-    if not topic:
-        topic = input("📝 Nhập chủ đề video: ").strip()
+    # ═══════════════════════════════════════════════════════════
+    # QUYẾT ĐỊNH CHẾ ĐỘ: idea.txt hay Gemini?
+    # ═══════════════════════════════════════════════════════════
+    use_idea_file = False
+    idea_path = None
+
+    if args.topic:
+        # Chế độ Gemini — người dùng truyền --topic
+        use_idea_file = False
+        print("📌 Chế độ: Gemini AI (sinh kịch bản tự động)")
+    elif args.idea:
+        # Chế độ idea.txt — người dùng chỉ định file cụ thể
+        use_idea_file = True
+        idea_path = args.idea
+        if not os.path.isabs(idea_path):
+            idea_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), idea_path)
+        print(f"📌 Chế độ: Đọc kịch bản từ file → {idea_path}")
+    elif os.path.exists(IDEA_FILE):
+        # Mặc định: tìm idea.txt trong thư mục dự án
+        use_idea_file = True
+        idea_path = IDEA_FILE
+        print(f"📌 Chế độ: Đọc kịch bản từ idea.txt (mặc định)")
+    else:
+        # Không có gì → hỏi topic
+        topic = input("📝 Nhập chủ đề video (hoặc tạo file idea.txt): ").strip()
         if not topic:
-            print("❌ Chủ đề không được để trống!")
+            print("❌ Không có chủ đề và không tìm thấy file idea.txt!")
             sys.exit(1)
+        args.topic = topic
+        use_idea_file = False
+        print("📌 Chế độ: Gemini AI (sinh kịch bản tự động)")
 
-    num_scenes = args.scenes
-
-    # Tạo thư mục output
-    slug = slugify(topic)
-    output_dir = os.path.join(OUTPUT_DIR, slug)
-    os.makedirs(output_dir, exist_ok=True)
-
-    print(f"📁 Thư mục output: {output_dir}")
-    print(f"📝 Chủ đề: {topic}")
-    print(f"🎬 Số cảnh: {num_scenes}")
-    print(f"📱 Tỷ lệ: 9:16 ({VIDEO_WIDTH}×{VIDEO_HEIGHT})")
     print()
 
     start_time = time.time()
 
     # ═══════════════════════════════════════════════════════════
-    # STEP 1: Sinh kịch bản
+    # STEP 1: Lấy kịch bản (từ idea.txt HOẶC Gemini)
     # ═══════════════════════════════════════════════════════════
     print("━" * 50)
-    print("📖 STEP 1/8: Sinh kịch bản...")
-    print("━" * 50)
 
-    story = generate_story(topic, num_scenes)
+    if use_idea_file:
+        print("📖 STEP 1/8: Đọc kịch bản từ file idea.txt...")
+        print("━" * 50)
+        story = parse_idea_file(idea_path)
+    else:
+        print("📖 STEP 1/8: Sinh kịch bản bằng Gemini AI...")
+        print("━" * 50)
+        story = generate_story(args.topic, args.scenes)
+
+    # Tạo thư mục output
+    slug = slugify(story["title"])
+    output_dir = os.path.join(OUTPUT_DIR, slug)
+    os.makedirs(output_dir, exist_ok=True)
 
     # Lưu story.json
     story_path = os.path.join(output_dir, "story.json")
     with open(story_path, 'w', encoding='utf-8') as f:
         json.dump(story, f, ensure_ascii=False, indent=2)
 
-    print(f"   ✅ Tiêu đề: {story['title']}")
-    print(f"   ✅ Số cảnh: {len(story['scenes'])}")
+    num_scenes = len(story["scenes"])
+
+    print(f"   📁 Thư mục output: {output_dir}")
+    print(f"   📝 Tiêu đề: {story['title']}")
+    print(f"   🎬 Số cảnh: {num_scenes}")
+    print(f"   📱 Tỷ lệ: 9:16 ({VIDEO_WIDTH}×{VIDEO_HEIGHT})")
     print(f"   ✅ Đã lưu: story.json")
     print()
 
@@ -123,7 +158,7 @@ Ví dụ:
     # STEP 2: Tạo giọng đọc + tính thời lượng
     # ═══════════════════════════════════════════════════════════
     print("━" * 50)
-    print("🎙️  STEP 2/8: Tạo giọng đọc (edge-tts, +15%)...")
+    print("🎙️  STEP 2/8: Tạo giọng đọc (edge-tts)...")
     print("━" * 50)
 
     for scene in story["scenes"]:
@@ -133,7 +168,7 @@ Ví dụ:
         print(f"   🎙️  Scene {sid}: \"{scene['narration'][:50]}...\"")
         generate_voice(scene["narration"], audio_path)
 
-        # Tính duration
+        # Tính duration thực tế từ audio
         duration = get_audio_duration(audio_path)
         scene["actual_duration"] = duration
         print(f"   ✅ scene_{sid}.mp3 ({duration}s)")
@@ -144,16 +179,26 @@ Ví dụ:
     # STEP 3: Tạo Intro/Outro Title Cards
     # ═══════════════════════════════════════════════════════════
     print("━" * 50)
-    print("🎨 STEP 3/8: Tạo Intro & Outro title cards...")
+    print("🎨 STEP 3/8: Tạo Intro & Outro title cards bằng AI...")
     print("━" * 50)
 
     intro_image_path = os.path.join(output_dir, "scene_intro.png")
     outro_image_path = os.path.join(output_dir, "scene_outro.png")
 
-    create_intro_card(story["title"], intro_image_path)
-    create_outro_card(outro_image_path)
+    intro_prompt = story.get("intro_prompt")
+    outro_prompt = story.get("outro_prompt")
 
-    # Tạo video intro/outro (zoom_in nhẹ, 3 giây)
+    if intro_prompt:
+        print(f"   🖼️  Sinh ảnh nền Intro: \"{intro_prompt[:60]}...\"")
+        generate_image(intro_prompt, intro_image_path)
+    
+    if outro_prompt:
+        print(f"   🖼️  Sinh ảnh nền Outro: \"{outro_prompt[:60]}...\"")
+        generate_image(outro_prompt, outro_image_path)
+
+    create_intro_card(story["title"], intro_image_path, bg_image_path=intro_image_path)
+    create_outro_card(outro_image_path, bg_image_path=outro_image_path)
+
     intro_video_path = os.path.join(output_dir, "scene_intro.mp4")
     outro_video_path = os.path.join(output_dir, "scene_outro.mp4")
 
@@ -213,21 +258,17 @@ Ví dụ:
     print("📝 STEP 6/8: Tạo phụ đề SRT...")
     print("━" * 50)
 
-    # Tạo scene list bao gồm intro + scenes + outro
     all_scenes_for_srt = []
 
-    # Intro — phụ đề trống (title card tự có chữ)
     all_scenes_for_srt.append({
         "scene_id": "intro",
         "subtitle": "",
         "actual_duration": intro_duration
     })
 
-    # Các scene chính
     for scene in story["scenes"]:
         all_scenes_for_srt.append(scene)
 
-    # Outro — phụ đề trống
     all_scenes_for_srt.append({
         "scene_id": "outro",
         "subtitle": "",
@@ -259,10 +300,9 @@ Ví dụ:
     # STEP 8: Ghép video hoàn chỉnh
     # ═══════════════════════════════════════════════════════════
     print("━" * 50)
-    print("🔗 STEP 8/8: Ghép video hoàn chỉnh (fade + giọng đọc)...")
+    print("🔗 STEP 8/8: Ghép video hoàn chỉnh (fade + nhạc nền + stereo)...")
     print("━" * 50)
 
-    # Xây dựng danh sách scenes đầy đủ (intro + content + outro)
     full_scenes = []
     full_scenes.append({
         "scene_id": "intro",
@@ -290,6 +330,7 @@ Ví dụ:
     # HOÀN THÀNH!
     # ═══════════════════════════════════════════════════════════
     file_size_mb = os.path.getsize(final_path) / (1024 * 1024)
+    mode_label = "📄 idea.txt" if use_idea_file else "🤖 Gemini AI"
 
     print()
     print("╔══════════════════════════════════════════════════╗")
@@ -298,12 +339,11 @@ Ví dụ:
     print()
     print(f"   📁 Video: {final_path}")
     print(f"   📱 Tỷ lệ: 9:16 ({VIDEO_WIDTH}×{VIDEO_HEIGHT})")
+    print(f"   🎬 Số cảnh: {num_scenes}")
     print(f"   📊 Dung lượng: {file_size_mb:.1f} MB")
     print(f"   ⏱️  Thời gian: {minutes}m {seconds}s")
+    print(f"   📌 Nguồn kịch bản: {mode_label}")
     print(f"   💰 Chi phí: $0")
-    print()
-    print(f"   ✨ Tính năng: Intro/Outro, Fade transitions,")
-    print(f"      Giọng đọc rõ, Bitrate cao")
     print()
     print(f"   👉 Mở video: open \"{final_path}\"")
     print()
@@ -322,7 +362,6 @@ def _create_silent_audio(output_path, duration):
         silence = AudioSegment.silent(duration=int(duration * 1000))
         silence.export(output_path, format="mp3")
     except Exception as e:
-        # Fallback: dùng FFmpeg tạo audio im lặng
         import subprocess
         subprocess.run([
             'ffmpeg', '-y',

@@ -1,0 +1,70 @@
+{
+  "title": "Người nghèo sợ mất tiền, người giàu sợ mất thời gian",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "narration": "Người nghèo lúc nào cũng sợ mất tiền. Nhưng người giàu… thứ họ sợ nhất lại là mất thời gian.",
+      "visual_prompt": "2D cinematic stickman animation. A black stickman desperately grabs falling coins in darkness. Above him, a giant glowing clock spins rapidly while a calm blue stickman silently watches from afar",
+      "camera_motion": "zoom_in",
+      "subtitle": "Người nghèo lúc nào cũng sợ mất tiền",
+      "time_start": "00:00",
+      "time_end": "00:04"
+    },
+    {
+      "scene_id": 2,
+      "narration": "Người nghèo dành cả ngày để tiết kiệm vài đồng lẻ… nhưng lại lãng phí hàng năm cuộc đời cho những điều vô nghĩa.",
+      "visual_prompt": "A stressed stickman counting tiny coins at a small desk while calendar pages burn away behind him. Dark blue atmosphere with glowing orange fire embers",
+      "camera_motion": "zoom_out",
+      "subtitle": "Người nghèo dành cả ngày để tiết kiệm vài đồng lẻ",
+      "time_start": "00:05",
+      "time_end": "00:09"
+    },
+    {
+      "scene_id": 3,
+      "narration": "Còn người giàu luôn hiểu: tiền mất có thể kiếm lại… nhưng thời gian trôi qua thì không bao giờ quay lại nữa.",
+      "visual_prompt": "A glowing cyan clock shatters into floating particles. The blue stickman walks calmly through the fragments while golden light reflects on his body",
+      "camera_motion": "zoom_in",
+      "subtitle": "Còn người giàu luôn hiểu: tiền mất có thể kiếm lại",
+      "time_start": "00:10",
+      "time_end": "00:14"
+    },
+    {
+      "scene_id": 4,
+      "narration": "Vì thế họ không tiếc tiền để học hỏi, mở rộng mối quan hệ, hay mua lại thời gian cho chính mình.",
+      "visual_prompt": "The blue stickman climbs glowing stairs made of books, clocks, and floating handshake symbols. Bright white light shines above",
+      "camera_motion": "zoom_out",
+      "subtitle": "Vì thế họ không tiếc tiền để học hỏi, mở rộng mối quan hệ, hay...",
+      "time_start": "00:15",
+      "time_end": "00:19"
+    },
+    {
+      "scene_id": 5,
+      "narration": "Người càng nghèo càng muốn tự làm mọi thứ. Người càng giàu càng biết dùng hệ thống để cuộc đời nhẹ hơn.",
+      "visual_prompt": "Two split-screen scenes. One exhausted black stickman carrying giant heavy boxes alone. On the other side, a calm blue stickman controls glowing gears and automated machines",
+      "camera_motion": "zoom_in",
+      "subtitle": "Người càng nghèo càng muốn tự làm mọi thứ",
+      "time_start": "00:20",
+      "time_end": "00:24"
+    },
+    {
+      "scene_id": 6,
+      "narration": "Có một sự thật rất đau lòng… nhiều người tưởng mình đang tiết kiệm tiền, nhưng thật ra đang âm thầm bán rẻ cả cuộc đời.",
+      "visual_prompt": "A lonely stickman trades glowing pieces of his lifespan to a shadow figure in exchange for small coins. His body slowly fades darker",
+      "camera_motion": "zoom_out",
+      "subtitle": "Có một sự thật rất đau lòng",
+      "time_start": "00:25",
+      "time_end": "00:30"
+    },
+    {
+      "scene_id": 7,
+      "narration": "Hãy nhớ… tiền bạc quan trọng. Nhưng thứ quý giá nhất của một con người… vẫn luôn là thời gian.",
+      "visual_prompt": "A blue stickman stands on a mountain cliff watching a massive glowing sunrise. Broken clocks float upward into the sky as golden light covers the scene",
+      "camera_motion": "zoom_in",
+      "subtitle": "Hãy nhớ",
+      "time_start": "00:31",
+      "time_end": "00:36"
+    }
+  ],
+  "intro_prompt": "2D cinematic stickman animation. A black stickman desperately grabs falling coins in darkness. Above him, a giant glowing clock spins rapidly while a calm blue stickman silently watches from afar, clean title card background, no text, copy space",
+  "outro_prompt": "A blue stickman stands on a mountain cliff watching a massive glowing sunrise. Broken clocks float upward into the sky as golden light covers the scene, clean closing card background, no text, copy space"
+}

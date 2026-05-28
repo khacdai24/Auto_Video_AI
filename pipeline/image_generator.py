@@ -185,9 +185,11 @@ def burn_subtitle_to_image(image_path, subtitle_text):
         # Cấu hình text — dùng tỷ lệ từ config
         font_size = int(height * SUBTITLE_FONT_SIZE_RATIO)
         
-        # Thử tìm font chữ Sans-Serif trên macOS
+        # Thử tìm font chữ Bold trên macOS để làm phụ đề nổi bật
         font = None
         font_paths = [
+            "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+            "/Library/Fonts/Arial Bold.ttf",
             "/System/Library/Fonts/Supplemental/Arial.ttf",
             "/Library/Fonts/Arial.ttf",
             "/System/Library/Fonts/Helvetica.ttc",
@@ -219,36 +221,44 @@ def burn_subtitle_to_image(image_path, subtitle_text):
 
         # Chọn vị trí: Cách đáy ảnh theo tỷ lệ từ config
         padding_y = int(height * SUBTITLE_Y_RATIO)
-        box_y1 = height - padding_y - total_height - 15
+        box_y1 = height - padding_y - total_height - 10
         box_y2 = height - padding_y + 10
-        box_x1 = (width - max_line_width) // 2 - 25
-        box_x2 = (width + max_line_width) // 2 + 25
+        box_x1 = (width - max_line_width) // 2 - 20
+        box_x2 = (width + max_line_width) // 2 + 20
         
         # Giới hạn box_x1, box_x2 trong khoảng ảnh
         box_x1 = max(10, box_x1)
         box_x2 = min(width - 10, box_x2)
 
-        # Vẽ nền đen bán trong suốt
+        # Vẽ nền đen bán trong suốt cực kỳ nhẹ (khoảng 33% opacity)
         overlay = Image.new('RGBA', img.size, (0, 0, 0, 0))
         overlay_draw = ImageDraw.Draw(overlay)
         overlay_draw.rounded_rectangle(
             [box_x1, box_y1, box_x2, box_y2],
             radius=8,
-            fill=(0, 0, 0, 160)
+            fill=(0, 0, 0, 85)
         )
         img = Image.alpha_composite(img.convert('RGBA'), overlay)
         draw = ImageDraw.Draw(img)
 
-        # Vẽ chữ màu trắng lên trên nền đen
+        # Vẽ chữ màu trắng với viền đen dày (stroke outline) đè lên trên nền mờ
         current_y = box_y1 + 8
+        stroke_width = max(3, int(font_size * 0.09))
         for i, line in enumerate(lines):
             line_w = line_widths[i]
             x = (width - line_w) // 2
-            draw.text((x, current_y), line, fill=(255, 255, 255), font=font)
+            draw.text(
+                (x, current_y), 
+                line, 
+                fill=(255, 255, 255), 
+                font=font,
+                stroke_width=stroke_width,
+                stroke_fill=(0, 0, 0)
+            )
             current_y += line_heights[i] + 8
 
         # Lưu đè lên ảnh gốc
         img.convert('RGB').save(image_path)
-        print(f"      📝 Đã burn phụ đề vào ảnh: \"{subtitle_text}\"")
+        print(f"      📝 Đã burn phụ đề vào ảnh (Bold + Outline): \"{subtitle_text}\"")
     except Exception as e:
         print(f"      ⚠️ Không thể burn phụ đề vào ảnh: {e}")

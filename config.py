@@ -5,6 +5,12 @@ Chỉnh sửa các giá trị bên dưới theo nhu cầu.
 import os
 
 # ============================================================
+# 📄 File ý tưởng kịch bản (idea.txt)
+# Nếu có file này, pipeline sẽ đọc kịch bản từ đây thay vì gọi Gemini
+# ============================================================
+IDEA_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "idea.txt")
+
+# ============================================================
 # 🔑 GEMINI API KEY (Miễn phí)
 # Lấy tại: https://aistudio.google.com/apikey
 # ============================================================
@@ -61,7 +67,7 @@ AUDIO_BITRATE = "128k"     # 128kbps (trước: 63kbps mono)
 # 📝 Cấu hình phụ đề — Burned-in bằng Pillow
 # ============================================================
 SUBTITLE_FONT_SIZE_RATIO = 0.025  # Gần size cũ: ~32px trên ảnh/video cao 1280px
-SUBTITLE_Y_RATIO = 0.07            # Gần vị trí cũ sau khi ảnh chuyển về đúng 9:16
+SUBTITLE_Y_RATIO = 0.20            # Đưa phụ đề lên cao hơn, tránh bị nút UI của các MXH che khuất
 
 # Giữ lại SUBTITLE_STYLE cho fallback FFmpeg subtitles filter
 SUBTITLE_STYLE = (
